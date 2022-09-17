@@ -19,7 +19,7 @@ app.use(cors());
 
 //connecting to the database and server
 mongoose.connect(mongoURL).then(function(){
-    app.listen(PORT, function(erroe){
+    app.listen(PORT, function(error){
         if(error){
             console.log('Server error:  ',error);
         }else{
@@ -34,3 +34,8 @@ mongoose.connect(mongoURL).then(function(){
 
 //application Routes
 
+app.get('/',function(req,res){
+    res.json({
+        mess:'server is running'
+    });
+});
