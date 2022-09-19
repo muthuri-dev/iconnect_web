@@ -1,34 +1,20 @@
-import {Button, Container, TextField, Typography} from '@mui/material'
-import CoverSVG from '../components/cover'
+import { Button, TextField, Typography } from "@mui/material";
+import { Container } from "@mui/system";
+import SecondSVG from "../components/second";
 import { FaGoogle ,FaFacebook,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/fa';
 
-const Register = () => {
-    return (  
-        <div className={"register"}>
+
+const Login = () => {
+    return ( 
+        <div className="login">
             <Container>
-                <CoverSVG/>
+                <SecondSVG/>
                 <div className={'head'}>
-                    <Typography>Register if you dont have an account</Typography>
+                    <Typography>Login to your account</Typography>
                 </div>
                 <form>
-                    <TextField 
-                    className={'inputs'}
-                    variant='outlined'
-                    required
-                    label='Username'
-                    color='secondary'
-                    sx={{input:{color:'white'},
-
-                        "& .MuiInputLabel-root": { color: "purple" },
-                        border: "1px solid white",
-                        borderRadius:1,
-                        marginBottom:4
-                      }}
-                    type='text'
-                    ></TextField>
-
-<TextField 
-                    className={'inputs'}
+                    <TextField
+                    className={"inputs"}
                     variant='outlined'
                     required
                     label='Email address'
@@ -43,25 +29,26 @@ const Register = () => {
                     type='email'
                     ></TextField>
 
-                <TextField 
-                    className={'inputs'}
+                    <TextField
+                    className={"inputs"}
                     variant='outlined'
                     required
-                    label='Username'
+                    label='Password'
                     color='secondary'
                     sx={{input:{color:'white'},
 
                         "& .MuiInputLabel-root": { color: "purple" },
                         border: "1px solid white",
-                        borderRadius:2,
+                        borderRadius:1,
                         marginBottom:4
                       }}
-                    type='text'
+                    type='password'
                     ></TextField>
+                        
                     <Button variant='contained'
-                    color='secondary'className={'submit'}
-                    >SUBMIT</Button>
+                    color='secondary'className={'submit'}>SUBMIT</Button>
                 </form>
+                      <Typography>Login with</Typography>
                 <div className={'sign'}>
                       <div className='icons'><FaGoogle color='white'/></div>
                       <div className='icons'><FaFacebook color='white'/></div>
@@ -71,7 +58,7 @@ const Register = () => {
                 </div>
             </Container>
         </div>
-    );
+     );
 }
  
-export default Register;
+export default Login;
