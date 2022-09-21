@@ -24,7 +24,7 @@ const Register = () => {
                         marginBottom:4
                       }}
                     type='text'
-                    ></TextField>
+                    />
 
 <TextField 
                     className={'inputs'}

@@ -1,7 +1,9 @@
 import { Divider, Grid } from "@mui/material";
+import HomeContent from "../components/homeContent";
 import Navbar from "../components/navbar";
 import ViewSVG from "../components/view";
 import ViewText from "../components/viewText";
+import FloatBtn from "../utils/fab.modal";
 
 
 const Home = () => {
@@ -14,8 +16,11 @@ const Home = () => {
                         <Divider/>
                         <Grid item><ViewSVG/></Grid>
                     </Grid>
+                    <Grid item container spacing={5}direction='row'>
+                        <Grid item><HomeContent/></Grid>
+                    </Grid>
                </Grid>
-                
+                <FloatBtn/>
         </div>
      );
 }
