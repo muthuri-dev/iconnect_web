@@ -1,11 +1,10 @@
-import {Button, Container, TextField, Typography} from '@mui/material'
+import {Button, TextField, Typography} from '@mui/material'
 import CoverSVG from '../components/cover'
 import { FaGoogle ,FaFacebook,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/fa';
 
 const Register = () => {
     return (  
         <div className={"register"}>
-            <Container>
                 <CoverSVG/>
                 <div className={'head'}>
                     <Typography>Register if you dont have an account</Typography>
@@ -69,7 +68,6 @@ const Register = () => {
                       <div className='icons'><FaLinkedin color='white'/></div>
                       <div className='icons'><FaTwitter color='white'/></div>
                 </div>
-            </Container>
         </div>
     );
 }

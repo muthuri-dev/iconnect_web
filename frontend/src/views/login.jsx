@@ -1,5 +1,4 @@
 import { Button, TextField, Typography } from "@mui/material";
-import { Container } from "@mui/system";
 import SecondSVG from "../components/second";
 import { FaGoogle ,FaFacebook,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/fa';
 
@@ -7,12 +6,11 @@ import { FaGoogle ,FaFacebook,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/f
 const Login = () => {
     return ( 
         <div className="login">
-            <Container>
                 <SecondSVG/>
                 <div className={'head'}>
                     <Typography>Login to your account</Typography>
                 </div>
-                <form>
+                <form autoComplete='off'>
                     <TextField
                     className={"inputs"}
                     variant='outlined'
@@ -56,7 +54,6 @@ const Login = () => {
                       <div className='icons'><FaLinkedin color='white'/></div>
                       <div className='icons'><FaTwitter color='white'/></div>
                 </div>
-            </Container>
         </div>
      );
 }
