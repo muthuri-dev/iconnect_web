@@ -1,13 +1,19 @@
 import { Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 
 const HomeContent = () => {
+    const navigate=useNavigate();
+
+    const handleProjects=function(){
+        navigate('/projects');
+    }
     return ( 
         <div className="content">
             <Grid container spacing={5} direction='column' alignContent='center'
             >
-                <Grid item container xs={6}md={4}sm={4}lg={4} alignSelf>
+                <Grid item container xs={6}md={4}sm={4}lg={4} sx={{display:'flex',justifyContent:'center'}}>
                     <Box
                     sx={{backgroundColor:'white',height:100,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
@@ -25,7 +31,7 @@ const HomeContent = () => {
                         <Typography sx={{fontFamily:'monospace'}} color='secondary'>Groups</Typography>
                     <Typography>Find and join groups of interested fiels in technology</Typography>
                     </Box>
-                    <Box
+                    <Box onClick={handleProjects}
                     sx={{backgroundColor:'white',height:100,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}

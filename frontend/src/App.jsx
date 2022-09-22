@@ -4,6 +4,7 @@ import Navbar from './components/navbar';
 import Error from './components/notFound';
 import Home from './views/home';
 import Login from './views/login';
+import Projects from './views/pages/projects.views';
 import Register from './views/register';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path='/login'element={<Login/>}/>
           <Route path='/nav'element={<Navbar/>}/>
           <Route path='/home'element={<Home/>}/>
+          <Route path='/projects'element={<Projects/>}/>
           <Route exact path='*' element={<Error/>}/>
         </Routes>
       </Switch>
