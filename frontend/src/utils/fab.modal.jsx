@@ -1,5 +1,6 @@
 import { Fab } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import DownloadIcon from "@mui/icons-material/Download";
 import{useState} from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material";
 
@@ -15,6 +16,13 @@ const FloatBtn = () => {
     }
     return ( 
         <div>
+            <Fab variant="extended" aria-label="edit" color='secondary'
+        sx={{position:'fixed',bottom:(theme)=>theme.spacing(10),
+            right:(theme)=>theme.spacing(2)
+    }}
+        >
+            <DownloadIcon/>Download App
+        </Fab>
         <Fab variant="extended" aria-label="edit" color='secondary'
         sx={{position:'fixed',bottom:(theme)=>theme.spacing(2),
             right:(theme)=>theme.spacing(2)
