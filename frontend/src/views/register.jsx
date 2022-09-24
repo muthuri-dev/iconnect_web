@@ -1,15 +1,57 @@
 import {Button, TextField, Typography} from '@mui/material'
 import CoverSVG from '../components/cover'
 import { FaGoogle ,FaFacebook,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/fa';
+import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+    const navigate= useNavigate();
+
+const[name, setName]= useState('');
+const[email, setEmail]= useState('');
+const[pass, setPass]= useState('');
+const [error, setError]= useState(false);
+
+const handleName=function(e){
+    setName(e.target.value);
+    console.log(e.target.value);
+}
+const handleEmail=function(e){
+    setEmail(e.target.value);
+    console.log(e.target.value);
+}
+const handlePass=function(e){
+    setPass(e.target.value);
+    console.log(e.target.value);
+}
+
+const handleSubmit= function(e){
+    e.preventDefault();
+    console.log({name,email,pass});
+    const newRegister=({
+        Username:name,
+        Email:email,
+        Password:pass
+    });
+    axios.post('http://localhost:8000/register/',newRegister)
+    .then(function(){
+        if(!name==='' && !email==='' && pass===''){
+            navigate('/login');
+            setError(true);
+        }
+       
+    }).catch(function(error){
+        console.log('Submiiting error:  ',error);
+    });
+}
     return (  
         <div className={"register"}>
                 <CoverSVG/>
                 <div className={'head'}>
                     <Typography>Register if you dont have an account</Typography>
                 </div>
-                <form>
+                <form autoComplete='off'>
                     <TextField 
                     className={'inputs'}
                     variant='outlined'
@@ -24,13 +66,16 @@ const Register = () => {
                         marginBottom:4
                       }}
                     type='text'
+                    onChange={handleName}
+                    value={name}
+                    error={error}
                     />
 
-<TextField 
+                   <TextField 
                     className={'inputs'}
                     variant='outlined'
                     required
-                    label='Email address'
+                    label='Email'
                     color='secondary'
                     sx={{input:{color:'white'},
 
@@ -40,13 +85,15 @@ const Register = () => {
                         marginBottom:4
                       }}
                     type='email'
+                    onChange={handleEmail}
+                    value={email}
                     ></TextField>
 
                 <TextField 
                     className={'inputs'}
                     variant='outlined'
                     required
-                    label='Username'
+                    label='Password'
                     color='secondary'
                     sx={{input:{color:'white'},
 
@@ -55,12 +102,19 @@ const Register = () => {
                         borderRadius:2,
                         marginBottom:4
                       }}
-                    type='text'
+                    type='password'
+                    onChange={handlePass}
+                    value={pass}
                     ></TextField>
                     <Button variant='contained'
                     color='secondary'className={'submit'}
+                    onClick={handleSubmit}
                     >SUBMIT</Button>
                 </form>
+                <Typography 
+                onClick={function(){navigate('/login')}}
+                sx={{color:'white',fontFamily:'monospace',cursor:'pointer'}}
+                >Have an Account Login</Typography>
                 <div className={'sign'}>
                       <div className='icons'><FaGoogle color='white'/></div>
                       <div className='icons'><FaFacebook color='white'/></div>

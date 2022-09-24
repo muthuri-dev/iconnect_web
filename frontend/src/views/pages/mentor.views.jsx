@@ -5,7 +5,7 @@ const Mentors = () => {
     return ( 
         <div>
             <Grid container direction='column'sx={{display:'flex',alignItems:'center'}}>
-
+                <Grid item></Grid>
             </Grid>
             <MentorsPage/>
         </div>

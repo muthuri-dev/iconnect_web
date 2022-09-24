@@ -1,9 +1,21 @@
 import { Button, TextField, Typography } from "@mui/material";
 import SecondSVG from "../components/second";
 import { FaGoogle ,FaFacebook,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/fa';
+import { useState } from "react";
 
 
 const Login = () => {
+  const [name, setName]= useState('');
+  const [emil, setEmail]= useState('');
+
+  const handleEmail=function(){
+    
+  }
+  const handlePass=function(){}
+
+  const handleSubmit= function(e){
+    e.preventDefault();
+  }
     return ( 
         <div className="login">
                 <SecondSVG/>
@@ -24,7 +36,7 @@ const Login = () => {
                         borderRadius:1,
                         marginBottom:4
                       }}
-                    type='email'
+                    type='email' onChange={handleEmail}
                     ></TextField>
 
                     <TextField
@@ -40,10 +52,10 @@ const Login = () => {
                         borderRadius:1,
                         marginBottom:4
                       }}
-                    type='password'
+                    type='password' onChange={handlePass}
                     ></TextField>
                         
-                    <Button variant='contained'
+                    <Button variant='contained' onClick={handleSubmit}
                     color='secondary'className={'submit'}>SUBMIT</Button>
                 </form>
                       <Typography>Login with</Typography>
