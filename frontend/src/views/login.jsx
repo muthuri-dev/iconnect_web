@@ -2,19 +2,29 @@ import { Button, TextField, Typography } from "@mui/material";
 import SecondSVG from "../components/second";
 import { FaGoogle ,FaFacebook,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/fa';
 import { useState } from "react";
+import axios from "axios";
 
 
 const Login = () => {
-  const [name, setName]= useState('');
-  const [emil, setEmail]= useState('');
+  const [email, setEmail]= useState('');
+  const [password, setPassword]= useState('');
 
-  const handleEmail=function(){
-    
+  const handleEmail=function(e){
+    setEmail(e.target.value)
   }
-  const handlePass=function(){}
+  const handlePass=function(e){
+    setPassword(e.target.value);
+
+  }
 
   const handleSubmit= function(e){
     e.preventDefault();
+    console.log({email,password});
+    const login=({
+      email:email,
+      password:password
+    });
+    axios.post('http://localhost:8000/login',login);
   }
     return ( 
         <div className="login">
@@ -37,6 +47,7 @@ const Login = () => {
                         marginBottom:4
                       }}
                     type='email' onChange={handleEmail}
+                    value={email}
                     ></TextField>
 
                     <TextField
@@ -53,6 +64,7 @@ const Login = () => {
                         marginBottom:4
                       }}
                     type='password' onChange={handlePass}
+                    value={password}
                     ></TextField>
                         
                     <Button variant='contained' onClick={handleSubmit}

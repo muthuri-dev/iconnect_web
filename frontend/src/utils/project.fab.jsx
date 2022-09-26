@@ -26,7 +26,6 @@ const ProjectsFAB = () => {
             <DialogContent spacing={1} sx={{textAlign:'center'}}>
                 <TextField sx={{width:300,margin:1}}required variant="outlined"color="secondary"label='Title'type='text' />
                 <TextField sx={{width:300,margin:1}}required variant="outlined"color="secondary"label='Description' type='text'/>
-                <TextField sx={{width:300,margin:1}} required variant="outlined"color="secondary"label='category'type='url' />
                 <TextField sx={{width:300,margin:1}} required variant="outlined"color="secondary"label='GitHub Link'type='url' />
                 <TextField sx={{width:300,margin:1}} variant="outlined"color="secondary"label='Live Project Link'type='url' />
                 <TextField sx={{width:300,margin:1}} required variant="outlined"color="secondary"label='ScreenShot'type='file' />

@@ -16,6 +16,7 @@ const app=express();
 
 //database schemas
 const register=require('./models/schema');
+const blog= require('./models/blogs');
 
 
 //middlewares
@@ -62,3 +63,37 @@ app.post('/register',function(req,res){
         }
     });
 });
+
+// user email and password validation
+app.post('/login', async function(req,res){
+    var {email, password}= req.body;
+    let user= await register.findOne({email})
+    if(user){
+        bycrpt.compare(req.params.password, password, function(resp, err){
+            if(resp.message==ok){
+                res.json(resp);
+            }else{
+                console.log('compare error: ',err);
+            }
+        })
+    }else{
+        console.log('user does not exist');
+    }
+
+});
+//posting blogs route
+
+app.post('/blog',function(req,res){
+    const newBlog= new blog({
+        title:req.body.title,
+        description:req.body.description
+    });
+    newBlog.save(function(err){
+        if(!err){
+            console.log('saved');
+            console.log({newBlog});
+        }else{
+            throw err;
+        }
+    });
+})
