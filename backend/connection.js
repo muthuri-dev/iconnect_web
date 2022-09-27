@@ -133,7 +133,7 @@ app.post('/errors', function(req,res){
     });
 });
 
-//getting all errorss from the database
+//getting all errors from the database
 app.get('/errors',function(req,res){
     errors.find({}).then(function(data){
         res.json({
@@ -166,6 +166,17 @@ app.post('/profile', function(req,res){
     });
 });
 
+//getting all user profiles from the database
+app.get('/profiles',function(req,res){
+    profile.find({}).then(function(data){
+        res.json({
+            data:data
+        });
+    }).catch(function(err){
+        console.log('fetching error: ',err);
+    })
+});
+
 //posting new group data
 
 app.post('/groups', function(req,res){
@@ -180,6 +191,16 @@ app.post('/groups', function(req,res){
             console.log('save error: ',err);
         }
     });
+});
+//getting all groups from the database
+app.get('/groups',function(req,res){
+    groups.find({}).then(function(data){
+        res.json({
+            data:data
+        });
+    }).catch(function(err){
+        console.log('fetching error: ',err);
+    })
 });
 
 //posting new mentor to the database
@@ -198,8 +219,18 @@ app.post('/mentors', function(req,res){
         }
     })
 });
+//getting all mentors from the database
+app.get('/mentors',function(req,res){
+    mentors.find({}).then(function(data){
+        res.json({
+            data:data
+        });
+    }).catch(function(err){
+        console.log('fetching error: ',err);
+    })
+});
 
-//posting newsto the database
+//posting news to the database
 
 app.post('/news', function(req,res){
     const newNews=new news({
@@ -214,6 +245,17 @@ app.post('/news', function(req,res){
         console.log('save error: ',err);
     }
    });
+});
+
+//getting all tech news from the database
+app.get('/news',function(req,res){
+    news.find({}).then(function(data){
+        res.json({
+            data:data
+        });
+    }).catch(function(err){
+        console.log('fetching error: ',err);
+    })
 });
 
 //posting new project to the database
@@ -236,3 +278,15 @@ app.post('/projects', function(req,res){
         }
     });
 });
+
+//getting all projects from the database
+app.get('/projects',function(req,res){
+    projects.find({}).then(function(data){
+        res.json({
+            data:data
+        });
+    }).catch(function(err){
+        console.log('fetching error: ',err);
+    })
+});
+
