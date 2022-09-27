@@ -17,6 +17,12 @@ const app=express();
 //database schemas
 const register=require('./models/schema');
 const blog= require('./models/blogs');
+const errors =require('./models/errors');
+const profile= require('./models/profile');
+const groups=require('./models/groups');
+const mentors= require('./models/mentors');
+const news = require('./models/news');
+const projects= require('./models/projects');
 
 
 //middlewares
@@ -96,4 +102,137 @@ app.post('/blog',function(req,res){
             throw err;
         }
     });
-})
+});
+
+//getting all blogs from the database
+app.get('/blogs',function(req,res){
+    blog.find({}).then(function(data){
+        res.json({
+            data:data
+        });
+    }).catch(function(err){
+        console.log('fetching error: ',err);
+    })
+});
+
+//posting errors route
+
+app.post('/errors', function(req,res){
+    const newError=new errors({
+        description:req.body.description,
+        git:req.body.git,
+        image:req.body.image,
+        phone:req.body.phone
+    });
+    newError.save(function(err){
+        if(!err){
+            console.log({newError});
+        }else{
+            console.log(err);
+        }
+    });
+});
+
+//getting all errorss from the database
+app.get('/errors',function(req,res){
+    errors.find({}).then(function(data){
+        res.json({
+            data:data
+        });
+    }).catch(function(err){
+        console.log('fetching error: ',err);
+    })
+});
+
+//posting new profile data
+
+app.post('/profile', function(req,res){
+    const newProfile= new profile({
+        name:req.body.name,
+        email:req.body.email,
+        phone:req.body.phone,
+        portifolio:req.body.portifolio,
+        linkedin:req.body.linkedin,
+        git:req.body.git,
+        twitter:req.body.twitter,
+        skills:req.body.skills,
+    });
+    newProfile.save(function(err){
+        if(!err){
+            console.log({newProfile});
+        }else{
+            console.log(err);
+        }
+    });
+});
+
+//posting new group data
+
+app.post('/groups', function(req,res){
+    const newGroup= new groups({
+        title:req.body.title,
+        link:req.body.link,
+    });
+    newGroup.save(function(err){
+        if(!err){
+            console.log({newGroup});
+        }else{
+            console.log('save error: ',err);
+        }
+    });
+});
+
+//posting new mentor to the database
+app.post('/mentors', function(req,res){
+    const newMentor= new mentors({
+        name:req.body.name,
+        git:req.body.git,
+        linkedin:req.body.linkedin,
+        phone:req.body.phone
+    });
+    newMentor.save(function(err){
+        if(!err){
+            console.log({newMentor});
+        }else{
+            console.log('save error: ',err);
+        }
+    })
+});
+
+//posting newsto the database
+
+app.post('/news', function(req,res){
+    const newNews=new news({
+        title:req.body.title,
+        content:req.body.content,
+        image:req.body.image
+    });
+    newNews.save( function(err){
+    if(!err){
+        console.log({newNews});
+    }else{
+        console.log('save error: ',err);
+    }
+   });
+});
+
+//posting new project to the database
+
+app.post('/projects', function(req,res){
+    const newProject= new projects({
+        title:req.body.title,
+        description:req.body.description,
+        git:req.body.git,
+        live:req.body.live,
+        image:req.body.image,
+        skills:req.body.skills,
+        category:req.body.category,
+    });
+    newProject.save(function(err){
+        if(!err){
+            console.log({newProject});
+        }else{
+            console.log('save error: ',err);
+        }
+    });
+});
