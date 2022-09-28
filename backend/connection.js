@@ -6,6 +6,10 @@ const multer= require('multer');
 const bodyParser= require('body-parser');
 const cors= require('cors');
 const bycrpt=require('bcryptjs');
+const jwt= require('jsonwebtoken');
+
+//jwt secret
+const JWT_SECRET='qwertyuiopasdfghjklzxcvbnm,qwerty[sdf[sdfg}*';
 
 //database and server
 const PORT =8000;
@@ -23,6 +27,7 @@ const groups=require('./models/groups');
 const mentors= require('./models/mentors');
 const news = require('./models/news');
 const projects= require('./models/projects');
+const { findOne } = require('./models/projects');
 
 
 //middlewares
@@ -54,38 +59,37 @@ app.get('/',function(req,res){
 });
 
 //posting route
-app.post('/register',function(req,res){
+app.post('/register',async function(req,res){
     const newRegister=new register({
         name:req.body.Username,
         email:req.body.Email,
         password:bycrpt.hashSync(req.body.Password,10)
     });
-    res.json({mess:'posting data'});
     newRegister.save(function(error){
-        if(!error){
-            console.log({newRegister});
-        }else{
-            console.log('error:  ',error);
-        }
-    });
+            if(!error){
+                console.log({newRegister});
+            }else{
+                console.log('error:  ',error);
+            }
+        });
 });
 
 // user email and password validation
 app.post('/login', async function(req,res){
     var {email, password}= req.body;
     let user= await register.findOne({email})
-    if(user){
-        bycrpt.compare(req.params.password, password, function(resp, err){
-            if(resp.message==ok){
-                res.json(resp);
-            }else{
-                console.log('compare error: ',err);
-            }
-        })
-    }else{
-        console.log('user does not exist');
+    if(!user){
+        return res.json({error:'User not found'});
     }
-
+    if(await bycrpt.compare(password,register.password)){
+        const token = jwt.sign({},JWT_SECRET);
+        if(res.status(201)){
+            return res.json({status:'ok',data:token});
+        }else{
+            return res.json({error:'error'});
+        }
+    };
+    res.json({status:'error',error:'Invalid Password'});
 });
 //posting blogs route
 

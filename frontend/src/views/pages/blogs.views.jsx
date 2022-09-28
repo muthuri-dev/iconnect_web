@@ -1,5 +1,5 @@
-import { Grid, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
+//import { Box } from "@mui/system";
 import BlogSVG from "../../components/blogSvg";
 import BlogsFAB from "../../utils/blogs.fab";
 import axios from "axios";
@@ -25,15 +25,18 @@ const BlogPage = () => {
                 <Grid item>
                     <Typography sx={{fontFamily:'monospace', color:'white',fontSize:20}}>Blogs and Articles</Typography>
                 </Grid>
-                <Grid item container>
-                    <Grid item sx={{color:'white'}} >
-                        <Box>
-                            {blogs && blogs.map((blog)=>(
-                                <Typography key={blog.id}>{blog.description}</Typography>
-                            ))}
-                            {!blogs && <Typography>Loading ...</Typography>}
-                        </Box>
-                    </Grid>
+                <Grid item container direction='row'sx={{alignItems:'center'}} >
+                    
+                        {blogs && blogs.map((blog)=>(
+                            <Card elevation={3} key={blog.id}sx={{margin:8,width:300}}>
+                                <CardHeader
+                                title={blog.title}
+                                />
+                                <CardContent>
+                                    <Typography color='secondary'>{blog.description}</Typography>
+                                </CardContent>
+                            </Card>
+                        ))}
                 </Grid>
             </Grid>
             <BlogsFAB/>

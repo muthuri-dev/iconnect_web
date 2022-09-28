@@ -1,9 +1,13 @@
 import {Button, TextField, Typography} from '@mui/material'
 import CoverSVG from '../components/cover'
-import { FaGoogle ,FaFacebook,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/fa';
-import { useState } from 'react';
+//import { FaGoogle ,FaFacebook,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/fa';
+import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {GoogleLogin} from 'react-google-login';
+import {gapi} from 'react-gapi-auth2';
+
+const clientId='223714405711-onntjk8aivk1eit5o9k8pi52dmaa1g4j.apps.googleusercontent.com'
 
 const Register = () => {
     const navigate= useNavigate();
@@ -45,6 +49,19 @@ const handleSubmit= function(e){
         console.log('Submiiting error:  ',error);
     });
 }
+const onSuccess=(res)=>{
+    console.log("LOGIN SUCCESS!");
+}
+const onFailure=(res)=>{
+    console.log("LOGIN FAILED!");
+}
+
+useEffect(()=>{
+    function start(){
+        gapi.client.init({clientId:clientId,scope:""})
+    };
+    gapi.load('client:auth2',start);
+});
     return (  
         <div className={"register"}>
                 <CoverSVG/>
@@ -116,11 +133,14 @@ const handleSubmit= function(e){
                 sx={{color:'white',fontFamily:'monospace',cursor:'pointer'}}
                 >Have an Account Login</Typography>
                 <div className={'sign'}>
-                      <div className='icons'><FaGoogle color='white'/></div>
-                      <div className='icons'><FaFacebook color='white'/></div>
-                      <div className='icons'><FaGithub color='white'/></div>
-                      <div className='icons'><FaLinkedin color='white'/></div>
-                      <div className='icons'><FaTwitter color='white'/></div>
+                      <GoogleLogin
+                      clientId={clientId}
+                      buttonText='Login'
+                      onSuccess={onSuccess}
+                      onFailure={onFailure}
+                      cookiePolicy={'single_host_origin'}
+                      isSignedIn={true}
+                      />
                 </div>
         </div>
     );
