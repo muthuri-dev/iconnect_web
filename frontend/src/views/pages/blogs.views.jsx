@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 const BlogPage = () => {
     const[blogs, setBlogs]=useState([]);
     useEffect(function(){
-        axios.get('http://localhost:8000/blogs/')
+        axios.get('https://immense-basin-80931.herokuapp.com/blogs/')
         .then(function(response){
             setBlogs(response.data.data);
         })

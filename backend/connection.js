@@ -12,8 +12,8 @@ const jwt= require('jsonwebtoken');
 const JWT_SECRET='qwertyuiopasdfghjklzxcvbnm,qwerty[sdf[sdfg}*';
 
 //database and server
-const PORT =8000;
-const mongoURL='mongodb://0.0.0.0/iConnect';
+const PORT =process.env.PORT || 8000;
+const mongoURL='mongodb+srv://kennedy:zxcvbnm12345@iconnect.x2n1uuq.mongodb.net/test';
 
 //initiating the express app
 const app=express();

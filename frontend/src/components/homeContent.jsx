@@ -30,7 +30,7 @@ const HomeContent = () => {
             >
                 <Grid item container xs={6}md={4}sm={4}lg={4} sx={{display:'flex',justifyContent:'center'}}>
                     <Box
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}
@@ -38,7 +38,7 @@ const HomeContent = () => {
                     <Typography>Build and connect with teams of interest to build amizing solutions</Typography>
                     </Box>
                     <Box onClick={handleGroups}
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}
@@ -47,7 +47,7 @@ const HomeContent = () => {
                     <Typography>Find and join groups of interested fiels in technology</Typography>
                     </Box>
                     <Box onClick={handleProjects}
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}
@@ -56,7 +56,7 @@ const HomeContent = () => {
                     <Typography>Showcase and view other peers projects and ideas</Typography>
                     </Box>
                     <Box
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}
@@ -65,7 +65,7 @@ const HomeContent = () => {
                     <Typography>View other peers profiles and connect with interested persons</Typography>
                     </Box>
                     <Box onClick={handleBlogs}
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}
@@ -74,7 +74,7 @@ const HomeContent = () => {
                     <Typography>Publish your blogs and view other peers blogs </Typography>
                     </Box>
                     <Box onClick={handleErrors}
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}
@@ -83,7 +83,7 @@ const HomeContent = () => {
                     <Typography>Share problems experienced to the community to get solutions</Typography>
                     </Box>
                     <Box onClick={handleMentors}
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}
@@ -92,7 +92,7 @@ const HomeContent = () => {
                     <Typography>Find and connect with experienced persons who can guide through the tech journey</Typography>
                     </Box>
                     <Box
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}
@@ -101,7 +101,7 @@ const HomeContent = () => {
                     <Typography>Showcase your animation skills</Typography>
                     </Box>
                     <Box
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}
@@ -110,7 +110,7 @@ const HomeContent = () => {
                     <Typography>Share your inspiration designs to other peers</Typography>
                     </Box>
                     <Box onClick={handleNews}
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}
@@ -119,7 +119,7 @@ const HomeContent = () => {
                     <Typography>Catch up with latest news including jobs and internships</Typography>
                     </Box>
                     <Box
-                    sx={{backgroundColor:'white',height:100,width:180,
+                    sx={{backgroundColor:'white',height:150,width:180,
                     opacity:[0.6,0.5,0.4],borderRadius:5,margin:2,
                     '&:Hover':{background:'primary'}
                     }}

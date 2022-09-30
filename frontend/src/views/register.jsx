@@ -1,13 +1,11 @@
 import {Button, TextField, Typography} from '@mui/material'
 import CoverSVG from '../components/cover'
 //import { FaGoogle ,FaFacebook,FaGithub,FaLinkedin,FaTwitter} from 'react-icons/fa';
-import { useState,useEffect } from 'react';
+import { useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {GoogleLogin} from 'react-google-login';
-import {gapi} from 'react-gapi-auth2';
 
-const clientId='223714405711-onntjk8aivk1eit5o9k8pi52dmaa1g4j.apps.googleusercontent.com'
 
 const Register = () => {
     const navigate= useNavigate();
@@ -38,30 +36,15 @@ const handleSubmit= function(e){
         Email:email,
         Password:pass
     });
-    axios.post('http://localhost:8000/register/',newRegister)
+    axios.post('https://immense-basin-80931.herokuapp.com/register',newRegister)
     .then(function(){
-        if(!name==='' && !email==='' && pass===''){
-            navigate('/login');
-            setError(true);
-        }
-       
+        setError(true);
     }).catch(function(error){
         console.log('Submiiting error:  ',error);
     });
-}
-const onSuccess=(res)=>{
-    console.log("LOGIN SUCCESS!");
-}
-const onFailure=(res)=>{
-    console.log("LOGIN FAILED!");
+    navigate('/home');
 }
 
-useEffect(()=>{
-    function start(){
-        gapi.client.init({clientId:clientId,scope:""})
-    };
-    gapi.load('client:auth2',start);
-});
     return (  
         <div className={"register"}>
                 <CoverSVG/>
@@ -129,18 +112,10 @@ useEffect(()=>{
                     >SUBMIT</Button>
                 </form>
                 <Typography 
-                onClick={function(){navigate('/login')}}
                 sx={{color:'white',fontFamily:'monospace',cursor:'pointer'}}
-                >Have an Account Login</Typography>
+                > Login With</Typography>
                 <div className={'sign'}>
-                      <GoogleLogin
-                      clientId={clientId}
-                      buttonText='Login'
-                      onSuccess={onSuccess}
-                      onFailure={onFailure}
-                      cookiePolicy={'single_host_origin'}
-                      isSignedIn={true}
-                      />
+                      <GoogleLogin/>
                 </div>
         </div>
     );

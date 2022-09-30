@@ -1,5 +1,6 @@
 import { Divider, Grid } from "@mui/material";
 import { Box } from "@mui/system";
+import Footer from "../components/footer";
 import HomeContent from "../components/homeContent";
 import Navbar from "../components/navbar";
 import ViewSVG from "../components/view";
@@ -26,6 +27,7 @@ const Home = () => {
                         <Grid item><HomeContent md={3}/></Grid>
                     </Grid>
                </Grid>
+               <Footer/>
                 <FloatBtn/>
         </div>
      );
