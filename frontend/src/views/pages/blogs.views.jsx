@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
-//import { Box } from "@mui/system";
+
 import BlogSVG from "../../components/blogSvg";
 import BlogsFAB from "../../utils/blogs.fab";
 import axios from "axios";

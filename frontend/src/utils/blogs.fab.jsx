@@ -30,7 +30,7 @@ const BlogsFAB = () => {
             title:title,
             description:description
         });
-        axios.post('http://localhost:8000/blog',newBlog);
+        axios.post('https://immense-basin-80931.herokuapp.com/blog',newBlog);
     }
     return ( 
         <div>

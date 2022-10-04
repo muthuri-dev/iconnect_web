@@ -6,7 +6,6 @@ const multer= require('multer');
 const bodyParser= require('body-parser');
 const cors= require('cors');
 const bycrpt=require('bcryptjs');
-const jwt= require('jsonwebtoken');
 
 //jwt secret
 const JWT_SECRET='qwertyuiopasdfghjklzxcvbnm,qwerty[sdf[sdfg}*';
@@ -27,7 +26,6 @@ const groups=require('./models/groups');
 const mentors= require('./models/mentors');
 const news = require('./models/news');
 const projects= require('./models/projects');
-const { findOne } = require('./models/projects');
 
 
 //middlewares
@@ -75,21 +73,16 @@ app.post('/register',async function(req,res){
 });
 
 // user email and password validation
-app.post('/login', async function(req,res){
-    var {email, password}= req.body;
-    let user= await register.findOne({email})
-    if(!user){
-        return res.json({error:'User not found'});
-    }
-    if(await bycrpt.compare(password,register.password)){
-        const token = jwt.sign({},JWT_SECRET);
-        if(res.status(201)){
-            return res.json({status:'ok',data:token});
-        }else{
-            return res.json({error:'error'});
-        }
-    };
-    res.json({status:'error',error:'Invalid Password'});
+app.post('/login',async function(req,res){
+    const user= await register.findOne({
+       email:req.body.email,
+       password:req.body.pass
+   });
+   if(user){
+       return res.json({status:'ok',user:true});
+   }else{
+       return res.json({status:'error',user:false});
+   }
 });
 //posting blogs route
 
@@ -116,7 +109,7 @@ app.get('/blogs',function(req,res){
         });
     }).catch(function(err){
         console.log('fetching error: ',err);
-    })
+    });
 });
 
 //posting errors route
@@ -145,7 +138,7 @@ app.get('/errors',function(req,res){
         });
     }).catch(function(err){
         console.log('fetching error: ',err);
-    })
+    });
 });
 
 //posting new profile data
@@ -178,7 +171,7 @@ app.get('/profiles',function(req,res){
         });
     }).catch(function(err){
         console.log('fetching error: ',err);
-    })
+    });
 });
 
 //posting new group data
@@ -204,7 +197,7 @@ app.get('/groups',function(req,res){
         });
     }).catch(function(err){
         console.log('fetching error: ',err);
-    })
+    });
 });
 
 //posting new mentor to the database
@@ -221,7 +214,7 @@ app.post('/mentors', function(req,res){
         }else{
             console.log('save error: ',err);
         }
-    })
+    });
 });
 //getting all mentors from the database
 app.get('/mentors',function(req,res){
@@ -231,7 +224,7 @@ app.get('/mentors',function(req,res){
         });
     }).catch(function(err){
         console.log('fetching error: ',err);
-    })
+    });
 });
 
 //posting news to the database
@@ -259,7 +252,7 @@ app.get('/news',function(req,res){
         });
     }).catch(function(err){
         console.log('fetching error: ',err);
-    })
+    });
 });
 
 //posting new project to the database
@@ -291,6 +284,6 @@ app.get('/projects',function(req,res){
         });
     }).catch(function(err){
         console.log('fetching error: ',err);
-    })
+    });
 });
 
