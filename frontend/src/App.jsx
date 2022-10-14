@@ -10,6 +10,7 @@ import GroupPage from './views/pages/group.views';
 import Mentors from './views/pages/mentor.views';
 import NewsPage from './views/pages/news.views';
 import Projects from './views/pages/projects.views';
+import GetStarted from './views/pages/start';
 import Register from './views/register';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/mentors' element={<Mentors/>}/>
           <Route path='/news' element={<NewsPage/>}/>
           <Route path='/groups' element={<GroupPage/>}/>
+          <Route path='/start' element={<GetStarted/>}/>
           <Route exact path='*' element={<Error/>}/>
         </Routes>
       </Switch>
